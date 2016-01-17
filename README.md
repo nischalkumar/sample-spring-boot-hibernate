@@ -11,9 +11,9 @@ This codebase needs java 1.7 and maven. Make sure the java home is set and echo 
 1)In black/src/main/resources/application.yaml update the below properties
     jdbc:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/black
-        username: black
-        password: mypassword
+        url: jdbc:mysql://127.0.0.1:3306/sample
+        username: sample
+        password: sample
     where
         3306  is the default port mysql jdbc driber. If the port has been changed manually in mysql then only change else there is no need to change it.
         black is the database name.
@@ -22,10 +22,10 @@ This codebase needs java 1.7 and maven. Make sure the java home is set and echo 
 
 
 2)create the mysql database and insert the dump in the database by executing the below command
-    mysql -u root -p happyinbit
+    mysql -u sample -psample
 
 
-2)cd to the repo. For ex: cd wizquiz
+2)cd to the repo. For ex: cd sample
 
 
 3)Compile the codebase by running.
