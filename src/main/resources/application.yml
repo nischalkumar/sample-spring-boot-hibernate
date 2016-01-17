@@ -1,0 +1,79 @@
+### This is the main way to configure the application (other than annotations).
+### This fils is in Yaml format but you can also do this using the traditional
+### Java properties feed.
+
+spring:
+  jmx:
+    enabled: true
+  profiles:
+    active: development
+---
+spring:
+    profiles: development
+server:
+    address: 127.0.0.1
+---
+spring:
+    profiles: production
+server:
+    address: padhaitech.com
+---
+
+server:
+  port: 8443
+
+#todo: make sure to always enable security in production
+security:
+  basic:
+    enabled: true
+
+#management endpoints on a separate port
+management:
+  port: 8092
+  security:
+    enabled: false # management port is internal only. no need to secure it.
+
+#default project info followed by actual injected pom-specified values.
+project:
+  name: black
+  version: 0.1
+  description: feed upload & download
+
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+
+logging:
+  file: /var/log/wizork/sample/backend.log
+  level.org.springframework.web: DEBUG
+  level.org.hibernate: ERROR
+
+
+#jdbc related configs
+jdbc:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://127.0.0.1:3306/sample
+  username: sample
+  password: sample
+
+c3p0:
+  acquireIncrement: 5
+  maxIdleTime: 10800
+  initialPoolSize: 10
+  minPoolSize: 1
+  maxPoolSize: 25
+  acquireRetryAttemps: 10
+  idleConnectionTestPeriod: 3600
+  testConnectionOnCheckin: true
+
+hibernate:
+  show_sql: false
+  dialect: org.hibernate.dialect.MySQLInnoDBDialect
+  format_sql: false
+  use_sql_comments: false
+  hbm2ddl.auto: update
+
+
